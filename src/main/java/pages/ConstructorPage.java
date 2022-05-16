@@ -61,11 +61,6 @@ public class ConstructorPage {
         element.shouldBe(Condition.visible).shouldHave(Condition.exactText(text));
     }
 
-    @Step("Проверка, что элемент на экране не отображается")
-    public void assertVisibleElement(SelenideElement element) {
-        element.isDisplayed();
-    }
-
     @Step("Переход между разделами")
     public boolean sectionClick(SelenideElement element, SelenideElement visibleElement) {
         element.click();

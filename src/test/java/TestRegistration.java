@@ -1,18 +1,18 @@
 import api.ApiSpecifications;
 import io.qameta.allure.junit4.DisplayName;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.LoginPage;
+import test.data.GeneratorTestData;
 
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestRegistration {
     LoginPage loginPage;
-    String userMail = RandomStringUtils.randomAlphabetic(10) + "@mail.ru";
-    String userPassword = RandomStringUtils.randomAlphabetic(10);
-    String userName = RandomStringUtils.randomAlphabetic(10);
+    String userMail = GeneratorTestData.getRandomMail();
+    String userPassword = GeneratorTestData.getRandomString();
+    String userName = GeneratorTestData.getRandomString();
 
     @Before
     @DisplayName("Открытие браузера")

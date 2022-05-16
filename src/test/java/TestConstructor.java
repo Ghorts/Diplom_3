@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,14 +20,14 @@ public class TestConstructor {
     @DisplayName("Переход в раздел соусы - успешно")
     public void openSauceSectionSuccess() {
         constructorPage.sectionClick(constructorPage.sauceSection, constructorPage.sauceSectionName);
-        constructorPage.assertVisibleElement(constructorPage.sauceSpike);
+        constructorPage.sauceSpike.shouldBe(Condition.visible);
     }
 
     @Test
     @DisplayName("Переход в раздел начинки - успешно")
     public void openFillingSectionSuccess() {
         constructorPage.sectionClick(constructorPage.fillingSection, constructorPage.fillingSectionName);
-        constructorPage.assertVisibleElement(constructorPage.fillingPatty);
+        constructorPage.fillingPatty.shouldBe(Condition.visible);
     }
 
     @Test
@@ -35,6 +36,6 @@ public class TestConstructor {
         assertTrue(constructorPage.sectionClick(constructorPage.fillingSection, constructorPage.fillingSectionName));
         constructorPage.fillingPatty.scrollIntoView(true);
         assertTrue(constructorPage.sectionClick(constructorPage.bunSection, constructorPage.bunSectionName));
-        constructorPage.assertVisibleElement(constructorPage.bunCrater);
+        constructorPage.bunCrater.shouldBe(Condition.visible);
     }
 }

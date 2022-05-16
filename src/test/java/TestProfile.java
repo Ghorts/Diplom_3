@@ -1,13 +1,13 @@
 import api.ApiSpecifications;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.ConstructorPage;
 import pages.LoginPage;
 import pages.ProfilePage;
+import test.data.GeneratorTestData;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
@@ -18,9 +18,9 @@ public class TestProfile {
     ProfilePage profilePage;
     String token;
     ConstructorPage homePage;
-    String userMail = RandomStringUtils.randomAlphabetic(10) + "@mail.ru";
-    String userPassword = RandomStringUtils.randomAlphabetic(10);
-    String userName = RandomStringUtils.randomAlphabetic(10);
+    String userMail = GeneratorTestData.getRandomMail();
+    String userPassword = GeneratorTestData.getRandomString();
+    String userName = GeneratorTestData.getRandomString();
 
     @Before
     @DisplayName("Создаём пользователя, открываем браузер, логинимся")

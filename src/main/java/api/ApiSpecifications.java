@@ -6,7 +6,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import pages.LoginPage;
-import test.data.GeneratorTestData;
 
 import static io.restassured.RestAssured.given;
 
