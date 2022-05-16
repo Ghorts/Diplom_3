@@ -1,4 +1,4 @@
-package pom;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -13,23 +13,23 @@ public class LoginPage {
 
     //Локатор кнопки "Личный кабинет"
     @FindBy(how = How.CSS, using = "#root > div > header > nav > a")
-    public static SelenideElement loginButton;
+    public SelenideElement loginButton;
     //Локатор кнопки "Зарегистрироваться"
 
     @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
-    public static SelenideElement signUpButton;
+    public SelenideElement signUpButton;
 
     //Локатор полей окна регистрации
     @FindBy(how = How.NAME, using = "name")
-    public static ElementsCollection registrationField;
+    public ElementsCollection registrationField;
 
     //Локатор поля пароль на окне регистрации
     @FindBy(how = How.NAME, using = "Пароль")
-    public static SelenideElement passwordField;
+    public SelenideElement passwordField;
 
     //Локатор кнопки "Зарегистрироваться"
     @FindBy(how = How.XPATH, using = ".//div/form/button")
-    public static SelenideElement registrationButton;
+    public SelenideElement registrationButton;
 
     //Локатор текста ошибки "Некорректный пароль"
     @FindBy(how = How.XPATH, using = ".//fieldset/div/p[text()='Некорректный пароль']")
@@ -41,22 +41,22 @@ public class LoginPage {
 
     //Локатор для кнопки "Войти"
     @FindBy(how = How.XPATH, using = ".//div/form/button[text()='Войти']")
-    public static SelenideElement getLoginButton;
+    public SelenideElement getLoginButton;
 
     //Локатор поля email на странице входа
     @FindBy(how = How.NAME, using = "name")
-    public static SelenideElement emailField;
+    public SelenideElement emailField;
 
     //Локатор кнопки Войти на форме регистрации
     @FindBy(how = How.XPATH, using = ".//div/p/a[text()= 'Войти']")
-    public static SelenideElement signInButton;
+    public SelenideElement signInButton;
 
     //Локатор кнопки Восстановить пароль на форме входа
     @FindBy(how = How.XPATH, using = ".//div/p/a[text()= 'Восстановить пароль']")
-    public static SelenideElement recoveryPasswordButton;
+    public SelenideElement recoveryPasswordButton;
 
     @Step("Регистрация клиента")
-    public static void registration(String name, String email, String password) {
+    public void registration(String name, String email, String password) {
         loginButton.click();
         signUpButton.click();
         registrationButton.click();
@@ -67,7 +67,7 @@ public class LoginPage {
     }
 
     @Step("Авторизация клиента")
-    public static LoginPage login(String email, String password) {
+    public LoginPage login(String email, String password) {
         emailField.setValue(email);
         passwordField.setValue(password);
         getLoginButton.click();
@@ -75,7 +75,7 @@ public class LoginPage {
     }
 
     @Step("Проверка присутствия необходимого элемента")
-    public static void assertElement(SelenideElement element, String text) {
+    public void assertElement(SelenideElement element, String text) {
         element.shouldBe(Condition.visible).shouldHave(Condition.exactText(text));
     }
 }

@@ -1,4 +1,4 @@
-package pom;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -25,7 +25,7 @@ public class ProfilePage {
     public SelenideElement logOutButton;
 
     @Step("Проверка присутствия необходимого элемента")
-    public static void assertElement(SelenideElement element, String text) {
+    public void assertElement(SelenideElement element, String text) {
         element.shouldBe(Condition.visible).shouldHave(Condition.exactText(text));
     }
 }

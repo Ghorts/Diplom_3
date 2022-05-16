@@ -5,10 +5,12 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import pages.LoginPage;
+import test.data.GeneratorTestData;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiSettings {
+public class ApiSpecifications {
 
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";
 
@@ -56,5 +58,13 @@ public class ApiSettings {
                 .when()
                 .post("/api/auth/login")
                 .then();
+    }
+
+    @Step("Удаление пользователя (при условии, что он был создан)")
+    public static void assertDelete(LoginPage loginPage, String mail, String password) {
+        if (loginPage.loginText.isDisplayed()) {
+            String token = new StringBuilder(ApiSpecifications.login(mail, password).statusCode(200).extract().path("accessToken")).delete(0, 6).toString();
+            ApiSpecifications.delete(token).statusCode(202);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package pom;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -57,18 +57,18 @@ public class ConstructorPage {
     public SelenideElement fillingPatty;
 
     @Step("Проверка присутствия необходимого элемента")
-    public static void assertElement(SelenideElement element, String text) {
+    public void assertElement(SelenideElement element, String text) {
         element.shouldBe(Condition.visible).shouldHave(Condition.exactText(text));
     }
 
     @Step("Проверка, что элемент на экране не отображается")
-    public static void assertVisibleElement(SelenideElement element) {
+    public void assertVisibleElement(SelenideElement element) {
         element.isDisplayed();
     }
 
     @Step("Переход между разделами")
-    public static void sectionClick(SelenideElement element, SelenideElement visibleElement) {
+    public boolean sectionClick(SelenideElement element, SelenideElement visibleElement) {
         element.click();
-        visibleElement.isDisplayed();
+        return visibleElement.isDisplayed();
     }
 }
